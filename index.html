@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MY INFORMATION</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 class="logo">MY INFORMATION</h1>
+      <nav class="main-nav" id="mainNav">
+        <a href="#Information">I N F O</a>
+        <a href="#Hobby">H O B B Y</a>
+        <a href="#Pets">P E T S</a>
+        <a href="#Skills">S K I L L</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="เมนู">☰</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="Information" class="card">
+      <h2>INFO</h2>
+
+      <p style="text-align: center;">
+        <img src="profile.jpg" 
+             alt="Profile" 
+             style="width: 200px; height: 200px; object-fit: cover; border-radius: 50% ; margin: 0 auto 15px;">
+      </p>
+
+      <p style="text-align: left;">
+        <img src="namelo.png" 
+             alt="NAMELOGO" 
+             style="width: 15px; height: 15px; object-fit: cover;margin: 0 auto 15px; "><strong>NAME :</strong> MR. Vashiravit Prathong</p>
+
+      <p style="text-align: left;">
+        <img src="studentlo.png" 
+             alt="STUDENTLOGO" 
+             style="width: 15px; height: 15px; object-fit: cover;margin: 0 auto 15px; "><strong>STUDENT ID :</strong> 6612463114</p>
+             
+      <p style="text-align: left;">
+        <img src="phonelo.png" 
+             alt="PHONELOGO" 
+             style="width: 15px; height: 15px; object-fit: cover;margin: 0 auto 15px; "><strong>PHONE :</strong> 063-6702-586</p>
+
+      <p style="text-align: left;">
+        <img src="fblogo.png" 
+             alt="FBLOGO" 
+             style="width: 15px; height: 15px; object-fit: cover;margin: 0 auto 15px; "><strong >FACEBOOK :</strong> Vashiravit Prathong
+      </p>
+
+      
+      <p style="text-align: left;">
+        <img src="inslogo.png" 
+             alt="INSLOGO" 
+             style="width: 15px; height: 15px; object-fit: cover;margin: 0 auto 15px; "><strong>INSTAGRAM :</strong> vashi.pnk</p>
+      
+    </section>
+
+    <section id="Hobby" class="card">
+      <h2>HOBBY</h2>
+
+        <p style="text-align: center;">
+        <img src="Hobbylogo.png" 
+             alt="HOBBYLOGO" 
+             style="width: 200px; height: 200px; object-fit: cover; border-radius: 50% ; margin: 0 auto 15px;">
+      </p>
+
+      <ul>
+        <li>Play Games</li>
+        <li>Listen music</li>
+        <li>Play Guitar</li>
+      </ul>
+      <p>EX Song Type: <a href="https://www.youtube.com/watch?v=lWhygAYsPrc" target="_blank" rel="noopener">YOUNGOHM - Jai Chan Tam Ter Pai</a></p>
+    </section>
+
+    <section id="Pets" class="card">
+      <h2>Favorite animals</h2>
+
+        <p style="text-align: center;">
+        <img src="petlogo.png" 
+             alt="Petlogo" 
+             style="width: 200px; height: 200px; object-fit: cover; border-radius: 50% ; margin: 0 auto 15px;">
+      </p>
+
+      <p><strong>DOG :</strong> Golden Retriever</p>
+      <p><strong>CAT :</strong> Scottish Fold</p>
+    </section>
+
+    <section id="Skills" class="card">
+      <h2>Skills</h2>
+
+        <p style="text-align: center;">
+        <img src="skilllogo.png" 
+             alt="skilllogo1" 
+             style="width: 200px; height: 200px; object-fit: cover; border-radius: 50% ; margin: 0 auto 15px;">
+      </p>
+
+      <p><strong>Esport :</strong> ROV </p>
+      <p><strong>MUSIC :</strong> Play Guitar</p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>© <span id="year"></span> ตัวอย่างเว็บไซต์ BY Vashiravit 114 CS</small>
+    </div>
+  </footer>
+
+<script>
+  // แสดงปีปัจจุบัน
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Smooth scroll (modern browsers)
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (!target) return;
+      target.scrollIntoView({behavior:'smooth', block:'start'});
+      // ปิดเมนูมือถือถ้ามี
+      document.getElementById('menuToggle').classList.remove('open');
+      document.getElementById('mainNav').classList.remove('open');
+    });
+  });
+
+  // Active nav while scrolling
+  const sections = document.querySelectorAll('main section');
+  const navLinks = document.querySelectorAll('.main-nav a');
+
+  function setActiveLink(){
+    let index = sections.length;
+    while(--index && window.scrollY + 80 < sections[index].offsetTop) {}
+    navLinks.forEach((link) => link.classList.remove('active'));
+    if (navLinks[index]) navLinks[index].classList.add('active');
+  }
+  setActiveLink();
+  window.addEventListener('scroll', setActiveLink);
+
+  // Simple mobile menu toggle
+  document.getElementById('menuToggle').addEventListener('click', function(){
+    this.classList.toggle('open');
+    document.getElementById('mainNav').classList.toggle('open');
+  });
+</script>
+</body>
+</html>
